@@ -1,7 +1,7 @@
 from typing import Optional
 from fastapi import FastAPI
 from pydantic import BaseModel
-import subprocess
+import subprocess, imp
 
 app = FastAPI()
 
@@ -26,5 +26,8 @@ def update_item( item: Item):
 
 @app.get("/vsx/on")
 def vsx_on():
+    v = imp.load_source("habridge.vsx", "/home/pi/habridge/skripte/vsx.py")
+    vsx = v.VSX()
+    vsx.leiser()
     subprocess.call([self.path + "vsxExeCmd.sh", str(vnew)])
     return {}
