@@ -29,5 +29,4 @@ def vsx_on():
     v = imp.load_source("habridge.vsx", "/home/pi/habridge/skripte/vsx.py")
     vsx = v.VSX()
     vsx.leiser()
-    subprocess.call([self.path + "vsxExeCmd.sh", str(vnew)])
     return {}
