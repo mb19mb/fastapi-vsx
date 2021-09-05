@@ -4,11 +4,6 @@ from pydantic import BaseModel
 import subprocess, imp
 
 app = FastAPI()
-
-class Item(BaseModel):
-    name: str
-    price: float
-    is_offer: Optional[bool] = None
         
 class Volume(BaseModel):
     raw: int
@@ -18,15 +13,6 @@ class Volume(BaseModel):
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
-
-@app.post("/items")
-def update_item( item: Item):
-    print(item)
-    return {"item_name": item.name, "item_id": "2"}
 
 @app.post("/vsx/volume")
 def vsx_volume( vol: Volume):
