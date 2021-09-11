@@ -9,6 +9,10 @@ class Volume(BaseModel):
     raw: int
     percent: int
         
+def log(msg):
+    f = file.open("/tmp/vsx.log", "aw")
+    f.write(msg+"\n")
+    f.close()
 
 @app.get("/")
 def read_root():
@@ -16,7 +20,8 @@ def read_root():
 
 @app.post("/vsx/volume")
 def vsx_volume( vol: Volume):
-    print(vol)
+    log("fast-api volume")
+    log(vol)
     v = imp.load_source("habridge.vsx", "/home/pi/habridge/skripte/vsx.py")
     vsx = v.VSX()
     vsx.volume(vol.percent)
@@ -24,6 +29,7 @@ def vsx_volume( vol: Volume):
 
 @app.get("/vsx/on")
 def vsx_on():
+    log("fast-api on")
     v = imp.load_source("habridge.vsx", "/home/pi/habridge/skripte/vsx.py")
     vsx = v.VSX()
     vsx.einschalten()
@@ -32,6 +38,7 @@ def vsx_on():
 
 @app.get("/vsx/off")
 def vsx_off():
+    log("fast-api off")
     v = imp.load_source("habridge.vsx", "/home/pi/habridge/skripte/vsx.py")
     vsx = v.VSX()
     vsx.ausschalten()
