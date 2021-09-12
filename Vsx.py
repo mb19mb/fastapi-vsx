@@ -28,7 +28,7 @@ class Vsx:
         currentChannel= self.vsxTelnetClient.getLastCommandResult()
         if channel == "CD":
             if currentChannel != "01FN":
-                self.vsxTelnetClient.command(self.vInit+"VOL")
+                self.vsxTelnetClient.command(str(self.vInit)+"VOL")
                 self.vsxTelnetClient.command("01FN")
         if channel == "PS3":
             pass
