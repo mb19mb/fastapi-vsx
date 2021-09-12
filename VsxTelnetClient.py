@@ -32,7 +32,7 @@ class VsxTelnetClient:
             if value == b"" or value == "":
                 done = True
             else:
-                self.output += value.decode('ascii')
+                self.output += value.decode('ascii').strip()
                 self.outList.append(self.output)
         self.__closeTelnet()
 
