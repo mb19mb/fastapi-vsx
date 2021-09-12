@@ -34,12 +34,13 @@ class VsxTelnetClient:
 
 
     def getLastCommandResult(self):
-        print("?")
-        r = ""
-        for s in self.outList:
-            r += s
-        print(r)
-        return r
+        print("-----")
+        return self.output
+        # r = ""
+        # for s in self.outList:
+        #     r += s
+        # print(r)
+        # return r
 
     def __printLastCommandResult(self):
         print(self.currentCmd)
