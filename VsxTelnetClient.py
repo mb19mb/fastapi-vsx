@@ -27,8 +27,7 @@ class VsxTelnetClient:
         value = None
         while not done:
             value = self.tn.read_eager()
-            value = value.decode('ascii')
-            self.output += value
+            self.output += value.decode('ascii')
             if value == b"" or value == "":
                 done = True
 
