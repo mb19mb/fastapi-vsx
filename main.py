@@ -18,8 +18,8 @@ class Volume(BaseModel):
 def vsx_color( c: Color):
     print(c)
     vsx = Vsx()
-    #if c.r == 100 and c.g == 100 and c.b == 100:
-    vsx.leiser()
+    if c.r == 100 and c.g == 100 and c.b == 100:
+        vsx.leiser()
     return {}
 
 @app.post("/vsx/volume")
