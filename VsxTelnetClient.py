@@ -28,8 +28,8 @@ class VsxTelnetClient:
         while not done:
             value = self.tn.read_eager()
             print(value)
-            print(value.decode('ascii'))
-            self.output += value.decode('ascii')
+            #print(value.decode('ascii'))
+            #self.output += value.decode('ascii')
             if value == b"" or value == "":
                 done = True
 
