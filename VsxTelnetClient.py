@@ -16,6 +16,7 @@ class VsxTelnetClient:
     def command(self, cmd):
         self.currentCmd = cmd
         self.__openTelnet()
+        print("99")
         self.outList = []
         self.output = self.tn.read_eager()
         self.outList.append(self.output)
