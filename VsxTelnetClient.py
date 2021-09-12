@@ -24,8 +24,7 @@ class VsxTelnetClient:
         time.sleep(0.5)
         done = False
         count = 0
-        while not done and count < 10000:
-            print("77")
+        while not done and count < 100:
             count+=1
             print(count)
             value = ""
