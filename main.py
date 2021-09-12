@@ -27,9 +27,6 @@ def vsx_volume( vol: Volume):
 
 @app.get("/vsx/on")
 def vsx_on():
-    #v = imp.load_source("habridge.vsx", "/home/pi/habridge/skripte/vsx.py")
-    #vsx = v.VSX()
-    #vsx.einschalten()
     vsx = Vsx()
     vsx.einschalten()
     return {}

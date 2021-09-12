@@ -1,5 +1,6 @@
 #!/usr/bin/python
 from datetime import datetime
+from VsxTelnetClient import VsxTelnetClient
 import sys, subprocess, imp
 
 
@@ -11,10 +12,12 @@ class Vsx:
     vMax = 131
     vCurrent = 92
     vUpStepSize = 15
+    vsxTelnetClient = None
 
     def __init__(self):
         self.__log("")
         self.__readConfigParams()
+        self.vsxTelnetClient = VsxTelnetClient()
 
     def __readConfigParams(self):
         f = open(self.path + "config.sh", "r")
@@ -57,7 +60,11 @@ class Vsx:
 
     def einschalten(self):
         self.__log("Einschalten")
-        subprocess.call([self.path + "einschalten.sh"])
+        # Status abfragen
+        self.vsxTelnetClient.command("?P")
+        print(self.vsxTelnetClient.getLastCommandResult())
+        #self.vsxTelnetClient.command("PO")
+        #subprocess.call([self.path + "einschalten.sh"])
 
     def lauter(self):
         self.__log("Lauter")
