@@ -30,7 +30,7 @@ class Vsx:
             if currentChannel != "01FN":
                 self.vsxTelnetClient.command(self.vInit+"VOL")
                 self.vsxTelnetClient.command("01FN")
-        else if channel == "PS3":
+        if channel == "PS3":
             pass
         
     def volume(self, percent):
