@@ -62,7 +62,9 @@ class Vsx:
         self.__log("Einschalten")
         # Status abfragen
         self.vsxTelnetClient.command("?P")
-        print(self.vsxTelnetClient.getLastCommandResult())
+        r = self.vsxTelnetClient.getLastCommandResult()
+        print(r)
+        self.__log(r)
         #self.vsxTelnetClient.command("PO")
         #subprocess.call([self.path + "einschalten.sh"])
 
