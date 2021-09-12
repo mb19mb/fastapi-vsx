@@ -29,7 +29,9 @@ class Vsx:
         if channel == "CD":
             if currentChannel != "01FN":
                 self.vsxTelnetClient.command(str(self.vInit)+"VOL")
+                self.__log("    Volume setzen")
                 self.vsxTelnetClient.command("01FN")
+                self.__log("    Kanal wechseln")
         if channel == "PS3":
             pass
         
