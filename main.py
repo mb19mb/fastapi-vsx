@@ -20,7 +20,7 @@ def vsx_color( c: Color):
     vsx = Vsx()
     if c.r == 255 and c.g == 2 and c.b == 2: # ROT
         vsx.leiser()
-    if c.r == 2 and c.g == 2 and c.b == 255: # BLAU
+    if c.r == 102 and c.g == 102 and c.b == 255: # BLAU
         vsx.lauter()
     return {}
 
