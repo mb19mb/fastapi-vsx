@@ -23,8 +23,10 @@ class VsxTelnetClient:
         self.tn.write(cmd.encode('ascii') + "\r\n".encode('ascii'))
         time.sleep(0.5)
         done = False
-        while not done:
+        count = 0
+        while not done or count > 10000:
             print("77")
+            count+=1
             value = ""
             value = self.tn.read_eager()
             print(value)
