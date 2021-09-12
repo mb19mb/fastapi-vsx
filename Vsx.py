@@ -4,7 +4,7 @@ import sys, subprocess, imp
 
 
 # noinspection PyInconsistentIndentation
-class VSX:
+class Vsx:
     path = "/home/pi/habridge/skripte/"
     logEnabled = True
     volumeTmpFile = ""

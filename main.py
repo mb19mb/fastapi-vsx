@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import subprocess, imp
 from VsxTelnetClient import VsxTelnetClient
+from Vsx import Vsx
 
 app = FastAPI()
         
@@ -38,7 +39,7 @@ def vsx_on():
 def vsx_off():
     log("fast-api off")
     v = imp.load_source("habridge.vsx", "/home/pi/habridge/skripte/vsx.py")
-    vsx = v.VSX()
+    vsx = v.Vsx()
     vsx.ausschalten()
     return {}
 
