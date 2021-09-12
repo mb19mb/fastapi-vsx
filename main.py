@@ -18,10 +18,7 @@ def log(msg):
 
 @app.post("/vsx/volume")
 def vsx_volume( vol: Volume):
-    log("fast-api volume")
-    log(vol)
-    v = imp.load_source("habridge.vsx", "/home/pi/habridge/skripte/vsx.py")
-    vsx = v.VSX()
+    vsx = Vsx()
     vsx.volume(vol.percent)
     return {}
 
