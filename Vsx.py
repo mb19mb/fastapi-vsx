@@ -6,6 +6,7 @@ import sys, subprocess, imp
 # noinspection PyInconsistentIndentation
 class Vsx:
     logEnabled = True
+    vInit = 100
     vMax = 131
     vCurrent = 92
     vUpStepSize = 15
@@ -21,8 +22,22 @@ class Vsx:
         self.__checkCurrentIsNumeric()
         self.__log("aktuelle Lautstaerke: " + str(self.vCurrent))
 
+    def umschalten(self, channel):
+        self.__log("umschalten()")
+        self.vsxTelnetClient.command("?F")
+        currentChannel= self.vsxTelnetClient.getLastCommandResult()
+        if channel == "CD":
+            if currentChannel != "01FN":
+                vnew = (str(self.vInit) + "VL").rjust(5, "0")
+                self.vsxTelnetClient.command(vnew)
+                self.__log("    Volume setzen")
+                self.vsxTelnetClient.command("01FN")
+                self.__log("    Kanal wechseln")
+        if channel == "PS3":
+            pass
+        
     def volume(self, percent):
-        self.__log("volume")
+        self.__log("volume()")
         self.__log(str(percent))
         vnew = int(round(self.vMax / 100 * percent))
 
