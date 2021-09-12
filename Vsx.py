@@ -36,7 +36,7 @@ class Vsx:
         #subprocess.call([self.path + "vsxExeCmd.sh", str(vnew)])
 
     def ausschalten(self):
-        self.__log("ausschalten")
+        self.__log("ausschalten()")
         # Status abfragen
         self.vsxTelnetClient.command("?P")
         currentState = self.vsxTelnetClient.getLastCommandResult()
@@ -51,7 +51,7 @@ class Vsx:
 
 
     def einschalten(self):
-        self.__log("einschalten")
+        self.__log("einschalten()")
         # Status abfragen
         self.vsxTelnetClient.command("?P")
         currentState = self.vsxTelnetClient.getLastCommandResult()
