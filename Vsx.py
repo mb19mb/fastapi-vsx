@@ -13,7 +13,6 @@ class Vsx:
 
     def __init__(self):
         self.__log("")
-        self.__readConfigParams()
         self.vsxTelnetClient = VsxTelnetClient()
 
     def __readCurrentVolume(self):
