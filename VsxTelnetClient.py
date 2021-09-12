@@ -33,8 +33,7 @@ class VsxTelnetClient:
                 done = True
             else:
                 self.output += value.decode('ascii')
-
-        self.outList.append(self.output)
+                self.outList.append(self.output)
         self.__closeTelnet()
 
 
