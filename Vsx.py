@@ -62,6 +62,7 @@ class Vsx:
         self.__log(currentState)
 
         if currentState == "PWR1":  # ist schon ausgeschalten
+            self.__log("    ist schon ausgeschalten")
             return
 
         self.vsxTelnetClient.command("PF") # PowerOff
@@ -75,6 +76,7 @@ class Vsx:
         self.__log(currentState)
 
         if currentState == "PWR0": # ist schon eingeschalten
+            self.__log("    ist schon eingeschalten")
             return
 
         self.vsxTelnetClient.command("PO") # PowerOn
