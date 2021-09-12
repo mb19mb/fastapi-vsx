@@ -109,20 +109,16 @@ class Vsx:
             self.vCurrent = 92
 
     def leiser(self):
-        self.__log("Leiser")
-        # Lautstaerke ermitteln
-        self.__readCurrentVolume()
+        self.__log("leiser")
 
-        # Ist Maximalwert bereits ueberschritten? Exit
-        if self.vCurrent > self.vMax:
-            self.__log("Maximale Lautstaerke erreicht")
-            sys.exit()
+        self.vsxTelnetClient.command("?V")
+        self.vCurrent = int(self.vsxTelnetClient.getLastCommandResult())
 
-        # Neue Lautstaerke setzen
         vnew = self.vCurrent - self.vUpStepSize
         vnew = (str(vnew) + "VL").rjust(5, "0")
         self.__log("neuer Lautstaerkewerte: " + vnew + "\n")
-        subprocess.call([self.path + "vsxExeCmd.sh", str(vnew)])
+        self.vsxTelnetClient.command(vnew)
+
 
     def __log(self, msg):
         if self.logEnabled == False:
