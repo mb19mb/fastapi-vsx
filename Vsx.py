@@ -45,14 +45,15 @@ class Vsx:
         self.__log("volume")
         self.__log(str(percent))
         vnew = int(round(self.vMax / 100 * percent))
-        # MAXWert ueberschritten? Beende
-        if int(vnew) > int(self.vMax):
-            self.__log("zulaut... mache nix")
+
+        if int(vnew) > int(self.vMax): # MAXWert ueberschritten? Beende
+            self.__log("    zulaut... mache nix")
             sys.exit()
 
         vnew = (str(vnew) + "VL").rjust(5, "0")
-        self.__log("neuer Lautstaerkewerte: " + vnew + "\n")
-        subprocess.call([self.path + "vsxExeCmd.sh", str(vnew)])
+        self.__log("    neuer Lautstaerkewerte: " + vnew + "\n")
+        self.vsxTelnetClient.command(vnew)
+        #subprocess.call([self.path + "vsxExeCmd.sh", str(vnew)])
 
     def ausschalten(self):
         self.__log("ausschalten")
