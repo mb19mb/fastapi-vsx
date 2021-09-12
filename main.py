@@ -9,6 +9,12 @@ class Volume(BaseModel):
     raw: int
     percent: int
 
+@app.post("/vsx/leiser")
+def vsx_volume( vol: Volume):
+    vsx = Vsx()
+    vsx.leiser(vol.percent)
+    return {}
+
 @app.post("/vsx/volume")
 def vsx_volume( vol: Volume):
     vsx = Vsx()

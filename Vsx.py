@@ -108,8 +108,9 @@ class Vsx:
             self.__log("vCurrent is not numceric. Adapt vCurrent...")
             self.vCurrent = 92
 
-    def leiser(self):
+    def leiser(self, perc):
         self.__log("leiser")
+        self.__log(perc)
 
         self.vsxTelnetClient.command("?V")
         self.vCurrent = int(self.vsxTelnetClient.getLastCommandResult())
