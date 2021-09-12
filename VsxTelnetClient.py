@@ -17,8 +17,10 @@ class VsxTelnetClient:
         self.currentCmd = cmd
         self.__openTelnet()
         self.outList = []
-        self.output = self.tn.read_eager()
-        self.outList.append(self.output.decode('ascii'))
+        t =  self.tn.read_eager()
+        if t != b"":
+            self.output = t
+            self.outList.append(t)
 
         self.tn.write(cmd.encode('ascii') + "\r\n".encode('ascii'))
 
