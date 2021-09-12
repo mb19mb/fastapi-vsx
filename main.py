@@ -18,7 +18,7 @@ class Volume(BaseModel):
 def vsx_color( c: Color):
     print(c)
     vsx = Vsx()
-    if c.r == 100 and c.g == 100 and c.b == 100:
+    if c.r == 255 and c.g == 2 and c.b == 2: # ROT
         vsx.leiser()
     if c.r == 200 and c.g == 200 and c.b == 200:
         vsx.lauter()
