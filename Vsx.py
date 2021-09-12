@@ -110,7 +110,6 @@ class Vsx:
 
     def leiser(self):
         self.__log("leiser")
-        self.__log(perc)
 
         self.vsxTelnetClient.command("?V")
         self.vCurrent = int(self.vsxTelnetClient.getLastCommandResult())
