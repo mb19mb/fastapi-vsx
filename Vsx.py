@@ -108,7 +108,7 @@ class Vsx:
             self.__log("vCurrent is not numceric. Adapt vCurrent...")
             self.vCurrent = 92
 
-    def leiser(self, perc):
+    def leiser(self):
         self.__log("leiser")
         self.__log(perc)
 

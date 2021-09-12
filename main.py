@@ -4,15 +4,22 @@ from pydantic import BaseModel
 from Vsx import Vsx
 
 app = FastAPI()
-        
+
+class Color(BaseModel):
+    r: int
+    g: int
+    b: int
+
 class Volume(BaseModel):
     raw: int
     percent: int
 
 @app.post("/vsx/color")
-def vsx_color( vol: Volume):
+def vsx_color( c: Color):
+    print(c)
     vsx = Vsx()
-    vsx.leiser(vol.percent)
+    if c.r == 100 and c.g == 100 and c.b == 100:
+        vsx.leiser()
     return {}
 
 @app.post("/vsx/volume")
