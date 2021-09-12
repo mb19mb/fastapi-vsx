@@ -55,7 +55,7 @@ class Vsx:
         subprocess.call([self.path + "vsxExeCmd.sh", str(vnew)])
 
     def ausschalten(self):
-        self.__log("Ausschalten")
+        self.__log("ausschalten")
         # Status abfragen
         self.vsxTelnetClient.command("?P")
         currentState = self.vsxTelnetClient.getLastCommandResult()
@@ -65,11 +65,12 @@ class Vsx:
             self.__log("    ist schon ausgeschalten")
             return
 
+        self.__log("PowerOff senden")
         self.vsxTelnetClient.command("PF") # PowerOff
 
 
     def einschalten(self):
-        self.__log("Einschalten")
+        self.__log("einschalten")
         # Status abfragen
         self.vsxTelnetClient.command("?P")
         currentState = self.vsxTelnetClient.getLastCommandResult()
@@ -79,6 +80,7 @@ class Vsx:
             self.__log("    ist schon eingeschalten")
             return
 
+        self.__log("PowerOn senden")
         self.vsxTelnetClient.command("PO") # PowerOn
 
 
