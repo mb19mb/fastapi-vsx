@@ -28,7 +28,8 @@ class Vsx:
         currentChannel= self.vsxTelnetClient.getLastCommandResult()
         if channel == "CD":
             if currentChannel != "01FN":
-                self.vsxTelnetClient.command(str(self.vInit)+"VOL")
+                vnew = (str(self.vInit) + "VL").rjust(5, "0")
+                self.vsxTelnetClient.command(vnew)
                 self.__log("    Volume setzen")
                 self.vsxTelnetClient.command("01FN")
                 self.__log("    Kanal wechseln")
