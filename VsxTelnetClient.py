@@ -52,7 +52,7 @@ class VsxTelnetClient:
 
 
 if __name__ == "__main__":
-    v = VsxTelnet()
+    v = VsxTelnetClient()
     #v.command("?V")
     v.command("?P")
     print(v.getLastCommandResult())
