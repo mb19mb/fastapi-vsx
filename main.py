@@ -9,6 +9,7 @@ class Color(BaseModel):
     r: int
     g: int
     b: int
+    hsl: str
 
 class Volume(BaseModel):
     raw: int
