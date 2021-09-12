@@ -23,6 +23,8 @@ def vsx_color( c: Color):
         vsx.leiser()
     if c.h == 43690: #c.r == 102 and c.g == 102 and c.b == 255: # BLAU
         vsx.lauter()
+    if c.h == 3095:
+        vsx.umschalten("CD")
     return {}
 
 @app.post("/vsx/volume")
