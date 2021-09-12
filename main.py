@@ -9,8 +9,8 @@ class Volume(BaseModel):
     raw: int
     percent: int
 
-@app.post("/vsx/leiser")
-def vsx_volume( vol: Volume):
+@app.post("/vsx/color")
+def vsx_color( vol: Volume):
     vsx = Vsx()
     vsx.leiser(vol.percent)
     return {}
