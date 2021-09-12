@@ -112,7 +112,7 @@ class Vsx:
         self.__log("leiser")
 
         self.vsxTelnetClient.command("?V")
-        self.vCurrent = int(self.vsxTelnetClient.getLastCommandResult())
+        self.vCurrent = int(self.vsxTelnetClient.getLastCommandResult().replace("VOL", ""))
 
         vnew = self.vCurrent - self.vUpStepSize
         vnew = (str(vnew) + "VL").rjust(5, "0")
