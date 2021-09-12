@@ -34,9 +34,7 @@ def vsx_on():
 
 @app.get("/vsx/off")
 def vsx_off():
-    log("fast-api off")
-    v = imp.load_source("habridge.vsx", "/home/pi/habridge/skripte/vsx.py")
-    vsx = v.Vsx()
+    vsx = Vsx()
     vsx.ausschalten()
     return {}
 
