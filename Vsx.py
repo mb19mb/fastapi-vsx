@@ -103,7 +103,7 @@ class Vsx:
 
     def lauter(self):
         self.__log("Lauter")
-        self.vsxTelnetClient.command("?VOL")
+        self.vsxTelnetClient.command("?V")
         self.vCurrent = int(self.vsxTelnetClient.getLastCommandResult().replace("VOL", ""))
 
         vnew = self.vCurrent + self.vUpStepSize # Neue Lautstaerke setzen

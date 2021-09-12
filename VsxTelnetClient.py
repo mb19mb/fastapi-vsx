@@ -60,5 +60,5 @@ class VsxTelnetClient:
 
 if __name__ == "__main__":
     v = VsxTelnetClient()
-    v.command("?VOL")
+    v.command("?V")
     print(v.getLastCommandResult())
