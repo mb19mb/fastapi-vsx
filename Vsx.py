@@ -84,8 +84,7 @@ class Vsx:
         self.__log("PowerOn senden")
         self.vsxTelnetClient.command("PO") # PowerOn
 
-
-    def lauter(self):
+    def lauter2(self):
         self.__log("Lauter")
         # ermittelte Lautstaerke einlesen
         self.__readCurrentVolume()
@@ -101,6 +100,23 @@ class Vsx:
         vnew = (str(vnew) + "VL").rjust(5, "0")
         self.__log("neuer Lautstaerkewerte: " + vnew + "\n")
         subprocess.call([self.path + "vsxExeCmd.sh", str(vnew)])
+
+    def lauter(self):
+        self.__log("Lauter")
+        self.vsxTelnetClient.command("?VOL")
+        self.vCurrent = int(self.vsxTelnetClient.getLastCommandResult().replace("VOL", ""))
+
+        vnew = self.vCurrent + self.vUpStepSize # Neue Lautstaerke setzen
+
+        # MAXWert ueberschritten? Beende
+        if int(vnew) > int(self.vMax):
+            self.__log("zulaut... mache nix")
+            return
+
+        vnew = (str(vnew) + "VL").rjust(5, "0")
+        self.__log("neuer Lautstaerkewerte: " + vnew + "\n")
+        self.vsxTelnetClient.command(str(vnew))
+
 
     def __vCurrentIsNumeric(self):
         # Konnte Lautstaerke nicht ermittelt werden, setzen wir Volume auf 92
