@@ -46,7 +46,7 @@ class Vsx:
             self.__log("    ist schon ausgeschalten")
             return
 
-        self.__log("PowerOff senden")
+        self.__log("    PowerOff senden")
         self.vsxTelnetClient.command("PF") # PowerOff
 
 
@@ -61,7 +61,7 @@ class Vsx:
             self.__log("    ist schon eingeschalten")
             return
 
-        self.__log("PowerOn senden")
+        self.__log("    PowerOn senden")
         self.vsxTelnetClient.command("PO") # PowerOn
 
 
@@ -73,18 +73,18 @@ class Vsx:
 
         # MAXWert ueberschritten? Beende
         if int(vnew) > int(self.vMax):
-            self.__log("zulaut... mache nix")
+            self.__log("    zulaut... mache nix")
             return
 
         vnew = (str(vnew) + "VL").rjust(5, "0")
-        self.__log("neuer Lautstaerkewerte: " + vnew + "\n")
+        self.__log("    neuer Lautstaerkewerte: " + vnew + "\n")
         self.vsxTelnetClient.command(str(vnew))
 
 
     def __checkCurrentIsNumeric(self):
         # Konnte Lautstaerke nicht ermittelt werden, setzen wir Volume auf 92
         if str(self.vCurrent).isnumeric() == False:
-            self.__log("vCurrent is not numceric. Adapt vCurrent...")
+            self.__log("    vCurrent is not numceric. Adapt vCurrent...")
             self.vCurrent = 92
 
     def leiser(self):
@@ -94,7 +94,7 @@ class Vsx:
 
         vnew = self.vCurrent - self.vUpStepSize
         vnew = (str(vnew) + "VL").rjust(5, "0")
-        self.__log("neuer Lautstaerkewerte: " + vnew + "\n")
+        self.__log("    neuer Lautstaerkewerte: " + vnew + "\n")
         self.vsxTelnetClient.command(vnew)
 
 

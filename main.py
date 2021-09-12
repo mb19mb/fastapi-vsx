@@ -9,6 +9,7 @@ class Color(BaseModel):
     r: int
     g: int
     b: int
+    h: int
 
 class Volume(BaseModel):
     raw: int
@@ -18,9 +19,9 @@ class Volume(BaseModel):
 def vsx_color( c: Color):
     print(c)
     vsx = Vsx()
-    if c.r == 255 and c.g == 2 and c.b == 2: # ROT
+    if c.h == 21845: #c.r == 255 and c.g == 2 and c.b == 2: # ROT
         vsx.leiser()
-    if c.r == 102 and c.g == 102 and c.b == 255: # BLAU
+    if c.h == 43690: #c.r == 102 and c.g == 102 and c.b == 255: # BLAU
         vsx.lauter()
     return {}
 
