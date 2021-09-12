@@ -24,10 +24,10 @@ class VsxTelnetClient:
         time.sleep(0.5)
         done = False
         count = 0
+        value = ""
         while not done and count < 100:
             count+=1
             print(count)
-            value = ""
             value = self.tn.read_eager()
             print(value)
             self.output += value
