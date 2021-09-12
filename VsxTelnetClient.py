@@ -27,6 +27,7 @@ class VsxTelnetClient:
         while not done and count < 10000:
             print("77")
             count+=1
+            print(count)
             value = ""
             value = self.tn.read_eager()
             print(value)
