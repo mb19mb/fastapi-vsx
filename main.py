@@ -2,6 +2,7 @@ from typing import Optional
 from fastapi import FastAPI
 from pydantic import BaseModel
 import subprocess, imp
+from VsxTelnetClient import VsxTelnetClient
 
 app = FastAPI()
         
@@ -14,10 +15,6 @@ def log(msg):
     f.write(msg+"\n")
     f.close()
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
 @app.post("/vsx/volume")
 def vsx_volume( vol: Volume):
     log("fast-api volume")
@@ -29,9 +26,10 @@ def vsx_volume( vol: Volume):
 
 @app.get("/vsx/on")
 def vsx_on():
-    log("fast-api on")
-    v = imp.load_source("habridge.vsx", "/home/pi/habridge/skripte/vsx.py")
-    vsx = v.VSX()
+    #v = imp.load_source("habridge.vsx", "/home/pi/habridge/skripte/vsx.py")
+    #vsx = v.VSX()
+    #vsx.einschalten()
+    vsx = Vsx()
     vsx.einschalten()
     return {}
 
@@ -43,3 +41,7 @@ def vsx_off():
     vsx = v.VSX()
     vsx.ausschalten()
     return {}
+
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
