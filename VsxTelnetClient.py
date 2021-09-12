@@ -16,11 +16,12 @@ class VsxTelnetClient:
     def command(self, cmd):
         self.currentCmd = cmd
         self.__openTelnet()
-        print("99")
+
         self.outList = []
         self.output = self.tn.read_eager()
         self.outList.append(self.output)
         self.tn.write(cmd.encode('ascii') + "\r\n".encode('ascii'))
+        print("88")
         time.sleep(0.5)
         done = False
         while not done:
