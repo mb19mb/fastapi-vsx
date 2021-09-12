@@ -62,9 +62,13 @@ class Vsx:
         self.__log("Einschalten")
         # Status abfragen
         self.vsxTelnetClient.command("?P")
-        r = self.vsxTelnetClient.getLastCommandResult()
-        self.__log(r)
-        #self.vsxTelnetClient.command("PO")
+        currentState = self.vsxTelnetClient.getLastCommandResult()
+        self.__log(currentState)
+
+        if currentState == "PWR0":
+            return
+
+        self.vsxTelnetClient.command("PO")
         #subprocess.call([self.path + "einschalten.sh"])
 
     def lauter(self):
