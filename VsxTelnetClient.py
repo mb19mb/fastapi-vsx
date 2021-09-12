@@ -25,13 +25,13 @@ class VsxTelnetClient:
         done = False
         count = 0
         value = ""
-        while not done and count < 100:
+        while not done and count < 10:
             count+=1
             print(count)
             value = self.tn.read_eager()
             print(value)
             self.output += value
-            if value == "":
+            if value == b"" or value == "":
                 done = True
 
         self.outList.append(self.output)
