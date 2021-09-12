@@ -21,10 +21,10 @@ class VsxTelnetClient:
         self.output = self.tn.read_eager()
         self.outList.append(self.output)
         self.tn.write(cmd.encode('ascii') + "\r\n".encode('ascii'))
-        print("88")
         time.sleep(0.5)
         done = False
         while not done:
+            print("77")
             value = ""
             value = self.tn.read_eager()
             self.output += value
