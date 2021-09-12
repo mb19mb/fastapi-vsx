@@ -27,6 +27,7 @@ class VsxTelnetClient:
             print("77")
             value = ""
             value = self.tn.read_eager()
+            print(value)
             self.output += value
             if value == "":
                 done = True
