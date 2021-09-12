@@ -54,6 +54,7 @@ class VsxTelnetClient:
 
 
 if __name__ == "__main__":
+    print("?")
     v = VsxTelnetClient()
     #v.command("?V")
     v.command("?P")
