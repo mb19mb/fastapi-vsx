@@ -39,6 +39,12 @@ class Vsx:
                 self.__log("    Volume setzen")
                 self.vsxTelnetClient.command("25FN")
                 self.__log("    Kanal wechseln")
+        if channel == "TV":
+            if currentChannel != "06FN":
+                self.vsxTelnetClient.command("071VL")
+                self.__log("    Volume setzen")
+                self.vsxTelnetClient.command("06FN")
+                self.__log("    Kanal wechseln")
         
     def volume(self, percent):
         self.__log("volume()")
