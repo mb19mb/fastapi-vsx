@@ -23,7 +23,7 @@ class Vsx:
         self.__log("aktuelle Lautstaerke: " + str(self.vCurrent))
 
     def umschalten(self, channel):
-        self.__log("umschalten()")
+        self.__log("umschalten("+channel+")")
         self.vsxTelnetClient.command("?F")
         currentChannel= self.vsxTelnetClient.getLastCommandResult()
         if channel == "CD":
@@ -34,7 +34,17 @@ class Vsx:
                 self.vsxTelnetClient.command("01FN")
                 self.__log("    Kanal wechseln")
         if channel == "PS3":
-            pass
+            if currentChannel != "25FN":
+                self.vsxTelnetClient.command("071VL")
+                self.__log("    Volume setzen")
+                self.vsxTelnetClient.command("25FN")
+                self.__log("    Kanal wechseln")
+        if channel == "TV":
+            if currentChannel != "06FN":
+                self.vsxTelnetClient.command("071VL")
+                self.__log("    Volume setzen")
+                self.vsxTelnetClient.command("06FN")
+                self.__log("    Kanal wechseln")
         
     def volume(self, percent):
         self.__log("volume()")
