@@ -34,11 +34,10 @@ class Vsx:
                 self.vsxTelnetClient.command("01FN")
                 self.__log("    Kanal wechseln")
         if channel == "PS3":
-            if currentChannel != "01FN":
-                vnew = (str(self.vInit) + "VL").rjust(5, "0")
-                self.vsxTelnetClient.command(vnew)
+            if currentChannel != "25FN":
+                self.vsxTelnetClient.command("071VL")
                 self.__log("    Volume setzen")
-                self.vsxTelnetClient.command("01FN")
+                self.vsxTelnetClient.command("25FN")
                 self.__log("    Kanal wechseln")
         
     def volume(self, percent):
