@@ -25,6 +25,8 @@ def vsx_color( c: Color):
         vsx.lauter()
     if c.h == 3095:
         vsx.umschalten("CD")
+    if c.h == 7300:
+        vsx.umschalten("PS3")
     return {}
 
 @app.post("/vsx/volume")
